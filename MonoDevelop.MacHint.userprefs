@@ -1,18 +1,19 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.MacHint/RegistrationDictionnary.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MonoDevelop.MacHint/GrowlService.cs">
     <Files>
-      <File FileName="MonoDevelop.MacHint/SimpleGrowlNotifier.cs" Line="150" Column="3" />
+      <File FileName="MonoDevelop.MacHint/SimpleGrowlNotifier.cs" Line="57" Column="27" />
       <File FileName="MonoDevelop.MacHint/Projects/BuildNotification.cs" Line="46" Column="18" />
-      <File FileName="MonoDevelop.MacHint/GrowlService.cs" Line="62" Column="68" />
-      <File FileName="MonoDevelop.MacHint/RegistrationDictionnary.cs" Line="60" Column="77" />
+      <File FileName="MonoDevelop.MacHint/GrowlService.cs" Line="103" Column="94" />
+      <File FileName="MonoDevelop.MacHint/RegistrationDictionnary.cs" Line="44" Column="3" />
+      <File FileName="MonoDevelop.MacHint/AssemblyInfo.cs" Line="20" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
-        <State expanded="True" selected="True">
+        <State expanded="True">
           <Node name="MonoDevelop.MacHint" expanded="True">
-            <Node name="References" expanded="True" />
-            <Node name="Projects" expanded="True" />
+            <Node name="Resources" expanded="True" />
+            <Node name="GrowlService.cs" selected="True" />
           </Node>
         </State>
       </Pad>

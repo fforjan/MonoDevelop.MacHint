@@ -21,6 +21,8 @@
 using System;
 using MonoMac.Foundation;
 using MonoMac.Growl;
+using System.Reflection;
+using System.IO;
 namespace MonoDevelop.MacHint
 {
 	/// <summary>
@@ -44,6 +46,10 @@ namespace MonoDevelop.MacHint
 		/// the application name
 		/// </summary>
 		private NSString _applicationName;
+		/// <summary>
+		/// the application icon
+		/// </summary>
+		private NSData _applicationIcon;
 			
 		/// <summary>
 		/// 
@@ -54,10 +60,13 @@ namespace MonoDevelop.MacHint
 		/// <param name="applicationName">
 		/// Describes the application Name 
 		/// </param>
+		/// <param name="applicationIcon">
+		/// Describes the application icon 
+		/// </param>
 		/// <param name="notifications">
 		/// The list of notification
 		/// </param>
-		public RegistrationDictionnary(String applicationName,String applicationID, string[] notifications)
+		public RegistrationDictionnary(String applicationName,String applicationID,Stream applicationIcon, string[] notifications)
 		{
 			if(String.IsNullOrEmpty(applicationID)) 
 			{ 
@@ -67,6 +76,10 @@ namespace MonoDevelop.MacHint
 			{ 
 				throw new ArgumentNullException("applicationName");
 			}
+			if(applicationIcon == null) 
+			{ 
+				throw new ArgumentNullException("applicationIcon");
+			}
 			if(notifications == null)
 			{
 				throw new ArgumentNullException("notifications");
@@ -74,6 +87,7 @@ namespace MonoDevelop.MacHint
 			
 			_applicationID = new NSString(applicationID);
 			_applicationName = new NSString(applicationName);
+			_applicationIcon = NSData.FromStream(applicationIcon);
 			_notifications = notifications;
 			
 			GrowlApplicationBridge.WeakDelegate = this;	
@@ -102,9 +116,8 @@ namespace MonoDevelop.MacHint
 		[MonoMac.Foundation.Export("applicationIconDataForGrowl")]
 		private NSData ApplicationIcon()
 		{
-			//TODO Get the image from the installation ?
-			var img = NSData.FromFile("/Users/GeoVah/Downloads/MonoDevelop.HelloWorld/MonoDevelop.HelloWorld/MonoDevelop.tiff");
-			return img;
+			
+			return _applicationIcon;
 		}
 		
 		

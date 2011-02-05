@@ -51,9 +51,11 @@
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Projects\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.MacHint.addin.xml" />
+    <EmbeddedResource Include="Resources\monodevelop.tiff" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

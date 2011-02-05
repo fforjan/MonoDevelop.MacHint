@@ -53,14 +53,17 @@ namespace MonoDevelop.MacHint
 		/// <param name="applicationID">
 		/// the application id
 		/// </param>
-		public SimpleGrowlNotifier (String applicationName,String applicationID)
+		/// <param name="applicationIcon">
+		/// the application icon
+		/// </param>
+		public SimpleGrowlNotifier (String applicationName,String applicationID,Stream applicationIcon)
 		{
 			if( !typeof(TNotifications).IsEnum )
 			{
 				throw new NotSupportedException( "TNotifications must be an Enum" );
 			}	
 			
-			_registration = new RegistrationDictionnary(applicationName,applicationID,GetNotificationsList());
+			_registration = new RegistrationDictionnary(applicationName,applicationID,applicationIcon,GetNotificationsList());
 			
 		}
 		

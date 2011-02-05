@@ -21,6 +21,7 @@
 using System;
 using MonoMac.AppKit;
 using MonoMac.Foundation;
+using System.Reflection;
 namespace MonoDevelop.MacHint
 {
 	/// <summary>
@@ -29,6 +30,45 @@ namespace MonoDevelop.MacHint
 	public static class GrowlService
 	{
 	
+		/// <summary>
+		/// Gets the assembly title.
+		/// </summary>
+		/// <value>The assembly title.</value>
+		private static string AssemblyTitle
+		{
+			get
+			{
+				// Get all Product attributes on this assembly
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+				// If there aren't any title attributes, return an empty string
+				if (attributes.Length == 0)
+					return "";
+				// If there is a title attribute, return its value
+				return ((AssemblyTitleAttribute)attributes[0]).Title;
+			}
+		}
+		
+		/// <summary>
+		/// Gets the assembly product.
+		/// </summary>
+		/// <value>The assembly product.</value>
+		private static string AssemblyProduct
+		{
+			get
+			{
+				// Get all Product attributes on this assembly
+				object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+				// If there aren't any title attributes, return an empty string
+				if (attributes.Length == 0)
+					return "";
+				// If there is a title attribute, return its value
+				return ((AssemblyProductAttribute)attributes[0]).Product;
+			}
+		}
+		
+
+
+		
 		/// <summary>
 		/// The list of notification available
 		/// </summary>
@@ -59,7 +99,11 @@ namespace MonoDevelop.MacHint
 			{
 				SimpleGrowlNotifier<NotificationId>.ConfigureGrowl();
 				NSApplication.Init();
-				GrowlServiceInstance = new SimpleGrowlNotifier<NotificationId>("MonoDevelop","MonoDevelop.MacHint.0.1");
+				GrowlServiceInstance = new SimpleGrowlNotifier<NotificationId>(AssemblyProduct,
+				                                                               String.Format("{0}-{1}.{2}",AssemblyTitle, 
+				                                                                             Assembly.GetExecutingAssembly().GetName().Version.Major,
+				                                                                             Assembly.GetExecutingAssembly().GetName().Version.Minor), 
+				                                                               Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.monodevelop.tiff"));
 			}
 			catch(Exception ex)
 			{
