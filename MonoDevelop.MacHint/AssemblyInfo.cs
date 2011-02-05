@@ -28,4 +28,5 @@ using System.Runtime.CompilerServices;
 #region Tasks
 //FIXME Look for the dependencies in the addin, Prj2Make should not be needed
 //TODO Add UI for the options
+//IDEA Maybe the build notification should not be send if the time is less than 2 seconds.
 #endregion 
