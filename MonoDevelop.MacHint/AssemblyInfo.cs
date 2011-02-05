@@ -27,4 +27,5 @@ using System.Runtime.CompilerServices;
 
 #region Tasks
 //FIXME Look for the dependencies in the addin, Prj2Make should not be needed
+//TODO Add UI for the options
 #endregion 
