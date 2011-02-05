@@ -21,15 +21,28 @@
 using System;
 using MonoDevelop.Projects;
 using MonoDevelop.Core;
+using MonoMac.Foundation;
 namespace MonoDevelop.MacHint.Projects
 {
+	/// <summary>
+	/// This class implements the project service extension
+	/// This extension determines when the build is succedded or failed
+	/// </summary>
 	public class BuildNotification: ProjectServiceExtension  
 	{  
+		/// <summary>
+		/// This method is call during a solution build
+		/// </summary>
 		protected override BuildResult Build (IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
 		{
-			MonoDevelop.Core.LoggingService.LogInfo("Do something before the solution build");
+			
 			var result = base.Build (monitor, solution, configuration);
-			MonoDevelop.Core.LoggingService.LogInfo("Do something after the solution build - {0}", result.Failed ? "Failed":"Success");
+			
+			GrowlService.GrowlServiceInstance.Notify(
+			                                 "Build Result",
+			                                 String.Format("Build is {0}",result.Failed ? "Failed" : "Succeeded"),
+			                                 GrowlService.NotificationId.BuildResult,
+			                                 GrowlService.DefaultIcon,0,false,null);
 			return result;
 		}
   
