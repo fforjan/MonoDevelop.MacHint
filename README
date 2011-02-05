@@ -1,0 +1,5 @@
+MonoDevelop.MacHint is adding functionnalies in MonoDevelop to integrate into MacOsX. As example being able to used the Growl notification Mechanism.
+
+You need to have the MomoMac plugin install into MonoDevelop to compile it.
+
+
