@@ -40,11 +40,12 @@ namespace MonoDevelop.MacHint.Projects
 			
 			GrowlService.GrowlServiceInstance.Notify(
 			                                 "Build Result",
-			                                 String.Format("Build is {0}",result.Failed ? "Failed" : "Succeeded"),
+			                                 String.Format("{0} is {1}", result.SourceTarget.Name ,result.Failed ? "Failed" : "Succeeded"),
 			                                 GrowlService.NotificationId.BuildResult,
 			                                 GrowlService.DefaultIcon,0,false,null);
 			return result;
 		}
+		
   
 	}
 }
