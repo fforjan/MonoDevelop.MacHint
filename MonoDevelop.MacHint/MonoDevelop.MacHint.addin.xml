@@ -1,0 +1,19 @@
+<Addin	id			= "MonoDevelop.MacHint"  
+		namespace	= "MonoDevelop"  
+		name		= "MonoDevelop.MacHint"  
+		author		= "Frederic Forjan"  
+		copyright	= "GPL3"  
+		description	= "MonoDevelopment Extra Integration into MacOS X"  
+		category	= "Mac Development"  
+		version		= "0.1">
+        
+	<Dependencies>
+       	<Addin id="Ide" version="2.4" />
+       	<Addin id="Core" version="2.4" />
+       	<Addin id = "Prj2Make" version = "2.4"/>
+	</Dependencies>
+		
+	<Extension path = "/MonoDevelop/ProjectModel/ProjectServiceExtensions">  
+    	<Class class="MonoDevelop.MacHint.Projects.BuildNotification"/>  
+	</Extension> 
+</Addin> 
