@@ -22,6 +22,8 @@ using System;
 using MonoDevelop.Projects;
 using MonoDevelop.Core;
 using MonoMac.Foundation;
+using MonoMac.AppKit;
+using MonoDevelop.Ide;
 namespace MonoDevelop.MacHint.Projects
 {
 	/// <summary>
@@ -34,15 +36,18 @@ namespace MonoDevelop.MacHint.Projects
 		/// This method is call during a solution build
 		/// </summary>
 		protected override BuildResult Build (IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
-		{
+		{			
 			
 			var result = base.Build (monitor, solution, configuration);
-			
-			GrowlService.GrowlServiceInstance.Notify(
+		
+			if(Properties.AlwaysDisplayBuildResult || !IdeApp.Workbench.RootWindow.HasToplevelFocus )
+			{
+				GrowlService.Instance.Notify(
 			                                 "Build Result",
 			                                 String.Format("{0} is {1}", result.SourceTarget.Name ,result.Failed ? "Failed" : "Succeeded"),
 			                                 GrowlService.NotificationId.BuildResult,
 			                                 GrowlService.DefaultIcon,0,false,null);
+			}
 			return result;
 		}
 		

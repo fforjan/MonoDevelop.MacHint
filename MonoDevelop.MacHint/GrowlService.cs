@@ -88,18 +88,19 @@ namespace MonoDevelop.MacHint
 		/// <summary>
 		/// The service implementation itself
 		/// </summary>
-		public static SimpleGrowlNotifier<NotificationId> GrowlServiceInstance {get;private set;}
+		public static SimpleGrowlNotifier<NotificationId> Instance {get;private set;}
 		
 		/// <summary>
 		/// Static constructor, it initialized the growl connection as soon as possible.
 		/// </summary>
 		static GrowlService ()
 		{
+			
 			try
 			{
 				SimpleGrowlNotifier<NotificationId>.ConfigureGrowl();
 				NSApplication.Init();
-				GrowlServiceInstance = new SimpleGrowlNotifier<NotificationId>(AssemblyProduct,
+				Instance = new SimpleGrowlNotifier<NotificationId>(AssemblyProduct,
 				                                                               String.Format("{0}-{1}.{2}",AssemblyTitle, 
 				                                                                             Assembly.GetExecutingAssembly().GetName().Version.Major,
 				                                                                             Assembly.GetExecutingAssembly().GetName().Version.Minor), 
