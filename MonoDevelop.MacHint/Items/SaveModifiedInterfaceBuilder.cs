@@ -23,6 +23,8 @@ using MonoDevelop.Projects;
 using System.Reflection;
 using System.IO;
 using MonoMac.Foundation;
+using MonoMac.AppKit;
+using MonoMac.ObjCRuntime;
 namespace MonoDevelop.MacHint.Items
 {
 	/// <summary>
@@ -30,22 +32,38 @@ namespace MonoDevelop.MacHint.Items
 	/// </summary>
 	public class SaveModifiedInterfaceBuilder : ProjectServiceExtension
 	{
+		/// <summary>
+		/// our private member for the save script singleton
+		/// </summary>
+		static NSAppleScript _saveDocumentScript;
+		
+		/// <summary>
+		/// Our save script singleton
+		/// </summary>
+		static public NSAppleScript SaveDocumentScript
+		{
+			get
+			{
+				if(_saveDocumentScript ==null)
+				{
+					var sourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.SavingInterfaceBuilder.scpt");
+			
+					var scriptContent = new StreamReader(sourceStream).ReadToEnd();
+		
+					_saveDocumentScript = new NSAppleScript(scriptContent);
+				}
+				return _saveDocumentScript;
+			}
+			
+		}
 		
 		/// <summary>
 		/// This method execute an AppleScript to save document Into the interface builder
 		/// </summary>
-		/// <remarks>
-		/// If interface builder is not launched, this method will launc it.
-		/// </remarks>
 		private void SaveInterfaceBuilderDocument()
 		{
-			var sourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.SavingInterfaceBuilder.scpt");
-			
-			var scriptContent = new StreamReader(sourceStream).ReadToEnd();
-		
-			NSAppleScript obj = new NSAppleScript(scriptContent);
 			NSDictionary errors = new NSDictionary();
-			obj.Execute(ref errors);
+			SaveDocumentScript.Execute(ref errors);
 		}
 		/// <summary>
 		/// Before doing any build, run our appliscript to save any document
@@ -53,12 +71,12 @@ namespace MonoDevelop.MacHint.Items
 		/// </summary>
 		protected override BuildResult Build (Core.IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
 		{
-			
-			//FIXME : check of the application is running before runing the script !
 			SaveInterfaceBuilderDocument();
 			
 			return base.Build (monitor, solution, configuration);
 		}
+		
+		
 	}
 }
 
