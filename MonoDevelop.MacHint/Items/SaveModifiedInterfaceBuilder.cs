@@ -30,25 +30,32 @@ namespace MonoDevelop.MacHint.Items
 	/// </summary>
 	public class SaveModifiedInterfaceBuilder : ProjectServiceExtension
 	{
+		
+		/// <summary>
+		/// This method execute an AppleScript to save document Into the interface builder
+		/// </summary>
+		/// <remarks>
+		/// If interface builder is not launched, this method will launc it.
+		/// </remarks>
+		private void SaveInterfaceBuilderDocument()
+		{
+			var sourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.SavingInterfaceBuilder.scpt");
+			
+			var scriptContent = new StreamReader(sourceStream).ReadToEnd();
+		
+			NSAppleScript obj = new NSAppleScript(scriptContent);
+			NSDictionary errors = new NSDictionary();
+			obj.Execute(ref errors);
+		}
 		/// <summary>
 		/// Before doing any build, run our appliscript to save any document
 		/// TODO : Check/Save only the one in the target
 		/// </summary>
 		protected override BuildResult Build (Core.IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
 		{
+			
 			//FIXME : check of the application is running before runing the script !
-			var sourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.SavingInterfaceBuilder.scpt");
-			
-			var scriptContent = new StreamReader(sourceStream).ReadToEnd();
-			
-			MonoDevelop.Core.LoggingService.LogInfo("Going to execute script of {0} chars", scriptContent.Length);
-			
-			NSAppleScript obj = new NSAppleScript(scriptContent);
-			NSDictionary errors = new NSDictionary();
-			obj.Execute(ref errors);
-			
-			MonoDevelop.Core.LoggingService.LogInfo("ScriptExecuted with {0} errors", errors.Keys.Length);
-			
+			SaveInterfaceBuilderDocument();
 			
 			return base.Build (monitor, solution, configuration);
 		}
