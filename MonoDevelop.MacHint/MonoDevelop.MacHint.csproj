@@ -49,15 +49,19 @@
     <Compile Include="GrowlService.cs" />
     <Compile Include="RegistrationDictionnary.cs" />
     <Compile Include="Properties.cs" />
+    <Compile Include="Items\SaveModifiedInterfaceBuilder.cs" />
+    <Compile Include="Items\NSAppleScript.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Projects\" />
     <Folder Include="Resources\" />
+    <Folder Include="Items\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.MacHint.addin.xml" />
     <EmbeddedResource Include="Resources\monodevelop.tiff" />
+    <EmbeddedResource Include="Resources\SavingInterfaceBuilder.scpt" />
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

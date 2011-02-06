@@ -37,10 +37,17 @@ namespace MonoDevelop.MacHint.Projects
 		/// </summary>
 		protected override BuildResult Build (IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
 		{			
-			
+			var startTime = DateTime.Now;
 			var result = base.Build (monitor, solution, configuration);
 		
-			if(Properties.AlwaysDisplayBuildResult || !IdeApp.Workbench.RootWindow.HasToplevelFocus )
+			var ellapsedTime = DateTime.Now - startTime;
+			
+			if((// we only display if the build time is enough...
+			    ellapsedTime.TotalSeconds > Properties.MinimumBuildTime)  
+			   && (
+			       //but we also check if MonoDevelop has the focus and our properties
+			       Properties.AlwaysDisplayBuildResult || !IdeApp.Workbench.RootWindow.HasToplevelFocus)
+			      )
 			{
 				GrowlService.Instance.Notify(
 			                                 "Build Result",

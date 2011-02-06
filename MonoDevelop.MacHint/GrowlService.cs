@@ -105,6 +105,7 @@ namespace MonoDevelop.MacHint
 				                                                                             Assembly.GetExecutingAssembly().GetName().Version.Major,
 				                                                                             Assembly.GetExecutingAssembly().GetName().Version.Minor), 
 				                                                               Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.monodevelop.tiff"));
+				MonoDevelop.Core.LoggingService.LogInfo("growl connected");
 			}
 			catch(Exception ex)
 			{

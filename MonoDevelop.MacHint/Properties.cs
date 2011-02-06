@@ -27,15 +27,16 @@ namespace MonoDevelop.MacHint
 	/// </summary>
 	public static class Properties
 	{
+		#region AlwaysDisplayBuildResult
 		/// <summary>
 		/// AlwaysDisplayBuildResult property ID
 		/// </summary>
-		public const string AlwaysDisplayBuildResultId = "MonoDevelop.MacHint.AlwaysDisplayBuildResult";
+		private const string AlwaysDisplayBuildResultId = "MonoDevelop.MacHint.AlwaysDisplayBuildResult";
 		
 		/// <summary>
 		/// AlwaysDisplayBuildResult default value;
 		/// </summary>
-		public const bool  AlwaysDisplayBuildResultDefault = true;
+		private const bool  AlwaysDisplayBuildResultDefault = true;
 		
 		/// <summary>
 		/// AlwaysDisplayBuildResult property
@@ -52,6 +53,37 @@ namespace MonoDevelop.MacHint
 			}
 			
 		}
+		#endregion
+		
+		#region MinimumBuildTime
+		/// <summary>
+		/// MinimumBuildTime property ID
+		/// </summary>
+		private const string MinimumBuildTimeId = "MonoDevelop.MacHint.MinimumBuildTime";
+		
+		/// <summary>
+		/// MinimumBuildTime default value;
+		/// </summary>
+		private const double  MinimumBuildTimeDefault = 2.0;
+		
+		/// <summary>
+		/// MinimumBuildTime property
+		/// </summary>
+		public static double MinimumBuildTime
+		{
+			get
+			{
+				return PropertyService.Get(MinimumBuildTimeId, MinimumBuildTimeDefault);
+			}	
+			set
+			{
+				PropertyService.Set(MinimumBuildTimeId,value);	
+			}
+			
+		}
+		
+		
+		#endregion
 	}
 }
 

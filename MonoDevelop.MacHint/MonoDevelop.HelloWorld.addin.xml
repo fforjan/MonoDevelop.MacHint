@@ -1,0 +1,24 @@
+<Addin	id			= "HelloWorld"  
+		namespace	= "MonoDevelop"  
+		name		= "Simple hello world"  
+		author		= "Rohde Fischer"  
+		copyright	= "MIT/X11"  
+		description	= "Says Hello world to the nice user"  
+		category	= "Rohde's example"  
+		version		= "1.0">
+        
+	<Dependencies>
+       	<Addin id="Ide" version="2.4" />
+       	<Addin id="Core" version="2.4" />
+	</Dependencies>
+		
+	<Extension path="/MonoDevelop/Ide/Commands">
+		<Command id="MonoDevelop.HelloWorld.Commands.SayHello"
+			_label="Say Hello"
+			defaultHandler="MonoDevelop.HelloWorld.SayHelloHandler" />
+	</Extension>
+
+	<Extension path="/MonoDevelop/Ide/MainMenu/Tools">
+		<CommandItem id="MonoDevelop.HelloWorld.Commands.SayHello" />
+	</Extension>
+</Addin> 

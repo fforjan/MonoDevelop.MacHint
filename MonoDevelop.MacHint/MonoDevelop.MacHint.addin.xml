@@ -14,6 +14,7 @@
 	</Dependencies>
 		
 	<Extension path = "/MonoDevelop/ProjectModel/ProjectServiceExtensions">  
-    	<Class class="MonoDevelop.MacHint.Projects.BuildNotification"/>  
+    	<Class class="MonoDevelop.MacHint.Projects.BuildNotification"/>
+    	<Class class="MonoDevelop.MacHint.Items.SaveModifiedInterfaceBuilder"/>  
 	</Extension> 
 </Addin> 
