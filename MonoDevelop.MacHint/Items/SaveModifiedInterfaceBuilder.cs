@@ -36,6 +36,7 @@ namespace MonoDevelop.MacHint.Items
 		/// </summary>
 		protected override BuildResult Build (Core.IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
 		{
+			//FIXME : check of the application is running before runing the script !
 			var sourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("MonoDevelop.MacHint.Resources.SavingInterfaceBuilder.scpt");
 			
 			var scriptContent = new StreamReader(sourceStream).ReadToEnd();
