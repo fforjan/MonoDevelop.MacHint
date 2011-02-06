@@ -17,7 +17,7 @@ using System.Runtime.CompilerServices;
 // The form "{Major}.{Minor}.*" will automatically update the build and revision,
 // and "{Major}.{Minor}.{Build}.*" will update just the revision.
 
-[assembly: AssemblyVersion("0.1.*")]
+[assembly: AssemblyVersion("0.2.*")]
 
 // The following attributes are used to specify the signing key for the assembly, 
 // if desired. See the Mono documentation for more information about signing.
@@ -28,6 +28,5 @@ using System.Runtime.CompilerServices;
 #region Tasks
 //FIXME Look for the dependencies in the addin, Prj2Make should not be needed
 //TODO Add UI for the options
-//TODO Check if we can deterine if InterfaceBuilder is opened and in a modified states
 //TODO Enables to opened scpt files with AppleScript Editor
 #endregion 
