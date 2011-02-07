@@ -4,7 +4,7 @@
 		author		= "Frederic Forjan"  
 		copyright	= "GPL3"  
 		description	= "MonoDevelopment Extra Integration into MacOS X"  
-		category	= "Mac Development"  
+		category	= "Platform Support"  
 		version		= "0.2">
         
 	<Dependencies>
