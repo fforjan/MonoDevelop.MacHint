@@ -31,25 +31,25 @@ namespace MonoDevelop.MacHint
 		/// <summary>
 		/// AlwaysDisplayBuildResult property ID
 		/// </summary>
-		private const string AlwaysDisplayBuildResultId = "MonoDevelop.MacHint.AlwaysDisplayBuildResult";
+		private const string BuildNotificationId = "MonoDevelop.MacHint.BuildNotification";
 		
 		/// <summary>
 		/// AlwaysDisplayBuildResult default value;
 		/// </summary>
-		private const bool  AlwaysDisplayBuildResultDefault = true;
+		private const bool  BuildNotificationDefault = true;
 		
 		/// <summary>
 		/// AlwaysDisplayBuildResult property
 		/// </summary>
-		public static bool AlwaysDisplayBuildResult
+		public static bool BuildNotification
 		{
 			get
 			{
-				return PropertyService.Get(AlwaysDisplayBuildResultId, AlwaysDisplayBuildResultDefault);
+				return PropertyService.Get(BuildNotificationId, BuildNotificationDefault);
 			}	
 			set
 			{
-				PropertyService.Set(AlwaysDisplayBuildResultId,value);	
+				PropertyService.Set(BuildNotificationId,value);	
 			}
 			
 		}
@@ -84,6 +84,65 @@ namespace MonoDevelop.MacHint
 		
 		
 		#endregion
+		
+		
+		#region AutoSaveInterfaceBuilderDoc
+		/// <summary>
+		/// AutoSaveInterfaceBuilderDoc property ID
+		/// </summary>
+		private const string AutoSaveInterfaceBuilderDocId = "MonoDevelop.MacHint.AutoSaveInterfaceBuilderDoc";
+		
+		/// <summary>
+		/// AutoSaveInterfaceBuilderDoc default value;
+		/// </summary>
+		private const bool  AutoSaveInterfaceBuilderDocDefault = true;
+		
+		/// <summary>
+		/// AutoSaveInterfaceBuilderDoc property
+		/// </summary>
+		public static bool AutoSaveInterfaceBuilderDoc
+		{
+			get
+			{
+				return PropertyService.Get(AutoSaveInterfaceBuilderDocId, AutoSaveInterfaceBuilderDocDefault);
+			}	
+			set
+			{
+				PropertyService.Set(AutoSaveInterfaceBuilderDocId,value);	
+			}
+			
+		}
+		
+		#endregion  
+		
+		#region AutoSaveInterfaceBuilderDoc
+		/// <summary>
+		/// AlwaysNotifyBuild property ID
+		/// </summary>
+		private const string BuildNotificationOnlyWhenNotActiveId = "MonoDevelop.MacHint.BuildNotificationOnlyWhenNotActive";
+		
+		/// <summary>
+		/// AlwaysNotifyBuild default value;
+		/// </summary>
+		private const bool  BuildNotificationOnlyWhenNotActiveDefault = false;
+		
+		/// <summary>
+		/// AlwaysNotifyBuild property
+		/// </summary>
+		public static bool BuildNotificationOnlyWhenNotActive
+		{
+			get
+			{
+				return PropertyService.Get(BuildNotificationOnlyWhenNotActiveId, BuildNotificationOnlyWhenNotActiveDefault);
+			}	
+			set
+			{
+				PropertyService.Set(BuildNotificationOnlyWhenNotActiveId,value);	
+			}
+			
+		}
+		
+		#endregion  AlwaysNotifyBuild
 	}
 }
 

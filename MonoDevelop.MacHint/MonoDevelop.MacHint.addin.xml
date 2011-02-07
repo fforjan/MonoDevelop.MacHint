@@ -12,9 +12,15 @@
        	<Addin id="Core" version="2.4" />
        	<Addin id = "Prj2Make" version = "2.4"/>
 	</Dependencies>
-		
+	
 	<Extension path = "/MonoDevelop/ProjectModel/ProjectServiceExtensions">  
     	<Class class="MonoDevelop.MacHint.Projects.BuildNotification"/>
     	<Class class="MonoDevelop.MacHint.Items.SaveModifiedInterfaceBuilder"/>  
 	</Extension> 
+	
+	
+	 <Extension path = "/MonoDevelop/Ide/GlobalOptionsDialog/Other">
+                        <Section id = "MacHintSettings" _label = "Mac Hint"
+                                class="MonoDevelop.MacHint.Gui.MacHintSettings"/>
+      </Extension>
 </Addin> 

@@ -41,6 +41,8 @@
     </Reference>
     <Reference Include="MonoMac, Version=0.0.0.0, Culture=neutral" />
     <Reference Include="gtk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="gdk-sharp, Version=2.12.0.0, Culture=neutral, PublicKeyToken=35e10195dab3c99f" />
+    <Reference Include="Mono.Posix" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -51,17 +53,25 @@
     <Compile Include="Properties.cs" />
     <Compile Include="Items\SaveModifiedInterfaceBuilder.cs" />
     <Compile Include="Items\NSAppleScript.cs" />
+    <Compile Include="gtk-gui\generated.cs" />
+    <Compile Include="Gui\MacHintSettingsWidget.cs" />
+    <Compile Include="gtk-gui\MonoDevelop.MacHint.Gui.MacHintSettingsWidget.cs" />
+    <Compile Include="Gui\MacHintSettings.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
     <Folder Include="Projects\" />
     <Folder Include="Resources\" />
     <Folder Include="Items\" />
+    <Folder Include="Gui\" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MonoDevelop.MacHint.addin.xml" />
     <EmbeddedResource Include="Resources\monodevelop.tiff" />
     <EmbeddedResource Include="Resources\SavingInterfaceBuilder.scpt" />
+    <EmbeddedResource Include="gtk-gui\gui.stetic">
+      <LogicalName>gui.stetic</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ProjectExtensions>
     <MonoDevelop>

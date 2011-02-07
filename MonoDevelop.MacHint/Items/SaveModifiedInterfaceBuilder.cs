@@ -71,7 +71,10 @@ namespace MonoDevelop.MacHint.Items
 		/// </summary>
 		protected override BuildResult Build (Core.IProgressMonitor monitor, Solution solution, ConfigurationSelector configuration)
 		{
-			SaveInterfaceBuilderDocument();
+			if(Properties.AutoSaveInterfaceBuilderDoc)
+			{
+				SaveInterfaceBuilderDocument();
+			}
 			
 			return base.Build (monitor, solution, configuration);
 		}

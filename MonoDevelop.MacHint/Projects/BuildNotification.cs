@@ -42,11 +42,12 @@ namespace MonoDevelop.MacHint.Projects
 		
 			var ellapsedTime = DateTime.Now - startTime;
 			
-			if((// we only display if the build time is enough...
-			    ellapsedTime.TotalSeconds > Properties.MinimumBuildTime)  
+			if(Properties.BuildNotification 
+			    // we only display if the build time is enough...
+			   && ( ellapsedTime.TotalSeconds > Properties.MinimumBuildTime)  
 			   && (
 			       //but we also check if MonoDevelop has the focus and our properties
-			       Properties.AlwaysDisplayBuildResult || !IdeApp.Workbench.RootWindow.HasToplevelFocus)
+			       (!Properties.BuildNotificationOnlyWhenNotActive) || !IdeApp.Workbench.RootWindow.HasToplevelFocus)
 			      )
 			{
 				GrowlService.Instance.Notify(
